@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>1483</title>
+</head>
+<body>
+<script>
+	var broj = parseInt(prompt("Unesite zeljeni broj:"));
+
+	faktorijel(broj);
+
+	function faktorijel(n, pre){
+		if(pre == null){
+			pre = 0;
+		}
+		if(n == 0){
+			return 1;
+		} else {
+			pre = faktorijel(n - 1, pre);
+			document.write(n + "! = " + n * pre + "<br>");
+			return n * pre;
+		}
+	}
+</script>
+</body>
+
+</html>

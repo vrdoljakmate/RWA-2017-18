@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>1483</title>
+</head>
+<body>
+<script>
+	
+	var jmbgStr = prompt("Unesite JMBG:");
+
+	provjeraJMBG(jmbgStr);
+
+	function provjeraJMBG(jmbgStr){
+
+		jmbgStr = jmbgStr.toString();
+
+		var jmbg = [];
+
+		for(var i = 0; i < jmbgStr.length; i++){
+			jmbg.push(parseInt(jmbgStr[i]));
+		}
+
+		if(jmbgStr.length != 13){
+			alert("JMBG mora zadrzavati 13 znakova");
+			return;
+		}
+
+		var kont = 11 - ((7*(jmbg[0]+jmbg[6]) + 
+							6*(jmbg[1]+jmbg[7]) + 
+							5*(jmbg[2]+jmbg[8]) + 
+							4*(jmbg[3]+jmbg[9]) + 
+							3*(jmbg[4]+jmbg[10]) + 
+							2*(jmbg[5]+jmbg[11])) % 11);
+
+		if(kont > 9){
+			kont = 0;
+		}
+		
+		if(kont != jmbg[12]){
+			alert("Pogresan unos!");
+			return;
+		}
+
+		var dan = jmbgStr.substring(0,2);
+		var mjesec = jmbgStr.substring(2,4);
+		var god = parseInt(jmbgStr.substring(4,7));
+		var region = parseInt(jmbgStr.substring(7,9));
+		var broj = parseInt(jmbgStr.substring(9,12));
+
+		if(god < 800){
+			god += 2000;
+		} else {
+			god += 1000;
+		}
+
+		if(dan > 0 && dan <= 31 && mjesec > 0 && mjesec <= 12){
+			document.write("Datum rodjenja: " + dan + "." + mjesec + "." + god + "<br>");
+		} else {
+			alert("Pogresan unos!");
+			return;
+		}
+
+		var mjesto;
+		switch(region){
+			case 10:
+				mjesto = "Banja luka";
+				break;
+			case 11:
+				mjesto = "Bihac";
+				break;
+			case 12:
+				mjesto = "Doboj";
+				break;
+			case 13:
+				mjesto = "Gorazde";
+				break;
+			case 14:
+				mjesto = "Livno";
+				break;
+			case 15:
+				mjesto = "Mostar";
+				break;
+			case 16:
+				mjesto = "Prijedor";
+				break;
+			case 17:
+				mjesto = "Sarajevo";
+				break;
+			case 18:
+				mjesto = "Tuzla";
+				break;
+			case 19:
+				mjesto = "Zenica";
+				break;
+			default:
+				mjesto = "Nije u sustavu";
+				alert("Pogresan unos!");
+				return;
+		}
+
+		document.write("Mjesto rodjenja: " + mjesto + "<br>");
+
+		var spol;
+		if(broj > 499 && broj < 1000){
+			spol = "Zenski";
+		} else if (broj > 0 && broj < 500) {
+			spol = "Muski";
+		} else {
+			alert("Pogresan unos!");
+			return;
+		}
+
+		document.write("Spol: " + spol);
+	}
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>1483</title>
+</head>
+<body>
+<script>
+		var broj1 = parseInt(prompt("Prvi broj:"));
+	var broj2 = parseInt(prompt("Drugi broj:"));
+
+	if(!isNaN(broj1) && !isNaN(broj2)){
+		prosjek(broj1, broj2);
+	} else {
+		alert("Pogresan unos!");
+	}
+	
+
+	function prosjek(i, j){
+		var zbroj = i + j;
+		var prosjek = zbroj / 2;
+		document.write("Aritmeticka sredina brojeva " + i + " i " + j + " je: " + prosjek);
+	}
+
+</script>
+</body>
+
+</html>
